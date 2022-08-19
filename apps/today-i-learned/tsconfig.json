@@ -1,18 +1,43 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "preserve",
     "allowJs": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "incremental": true,
-    "types": ["jest", "node"]
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es5",
+    "types": ["jest", "node", "@testing-library/react"]
   },
+  // "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
   "exclude": ["node_modules", "jest.config.ts"]
 }
+
+// {
+//   "extends": "../../tsconfig.base.json",
+//   "compilerOptions": {
+//     "jsx": "preserve",
+//     "allowJs": true,
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "strict": false,
+//     "forceConsistentCasingInFileNames": true,
+//     "noEmit": true,
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "incremental": true,
+//     "types": ["jest", "node"]
+//   },
+//   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
+//   "exclude": ["node_modules", "jest.config.ts"]
+// }

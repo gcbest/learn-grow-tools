@@ -9,7 +9,8 @@
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/today-i-learned",
-        "outputPath": "dist/apps/today-i-learned"
+        "outputPath": "dist/apps/today-i-learned",
+        "postcssConfig": "apps/today-i-learned/postcss.config.js"
       },
       "configurations": {
         "development": {
