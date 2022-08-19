@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run test && git fetch && echo "pre-push hook run"
+npm run test && git fetch && git rebase origin/develop && echo "pre-push hook run"
