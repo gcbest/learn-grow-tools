@@ -11,13 +11,9 @@ export enum AppName {
 
 /// Today I Learned ///
 interface ICreateNoteEventProps {
-  userId: string;
   title: string;
   content: string;
   isPublic: boolean;
-  comments: string[];
-  upVotes: number;
-  downVotes: number;
 }
 
 export interface ITodayILearnedEventMap {
@@ -34,12 +30,9 @@ export interface IDailyMastermindEventMap {
   createTask: ICreateTaskEventProps;
 }
 
-// NOTE: any new apps event maps will need to be added to this union
-type TAllAppEventMaps = ITodayILearnedEventMap | IDailyMastermindEventMap;
-
 export interface ITypeSafeAnalyticsInstance extends AnalyticsInstance {
-  trackEvent: <Key extends keyof TAllAppEventMaps>(
+  trackEvent: <Type, Key extends keyof Type>(
     eventName: Key,
-    eventProps: TAllAppEventMaps[Key]
+    eventProps: Type[Key]
   ) => void;
 }

@@ -2,13 +2,7 @@ import Analytics from 'analytics';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import googleAnalytics from '@analytics/google-analytics';
-import {
-  AnalyticsIDs,
-  AppName,
-  IDailyMastermindEventMap,
-  ITodayILearnedEventMap,
-  ITypeSafeAnalyticsInstance,
-} from './types';
+import { AnalyticsIDs, AppName, ITypeSafeAnalyticsInstance } from './types';
 
 export class UserAnalytics {
   analytics: ITypeSafeAnalyticsInstance;
@@ -52,18 +46,20 @@ export class UserAnalytics {
     return analytics as ITypeSafeAnalyticsInstance;
   }
 
-  trackDailyMastermindEvents<Key extends keyof IDailyMastermindEventMap>(
+  // prettier-ignore
+  trackDailyMastermindEvents = <IDailyMastermindEventMap, Key extends keyof IDailyMastermindEventMap>(
     eventName: Key,
     eventProps: IDailyMastermindEventMap[Key]
-  ) {
-    this.analytics.track(eventName, eventProps);
+  ) => {
+    this.analytics.track(eventName as string, eventProps);
   }
 
-  trackTodayILearnedEvents<Key extends keyof ITodayILearnedEventMap>(
+  // prettier-ignore
+  trackTodayILearnedEvents = <ITodayILearnedEventMap, Key extends keyof ITodayILearnedEventMap>(
     eventName: Key,
     eventProps: ITodayILearnedEventMap[Key]
-  ) {
-    this.analytics.track(eventName, eventProps);
+  ) => {
+    this.analytics.track(eventName as string, eventProps);
   }
 }
 
