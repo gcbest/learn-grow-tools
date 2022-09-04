@@ -28,39 +28,15 @@ export class UserAnalytics {
       ],
     });
 
-    switch (appName) {
-      case AppName.TODAY_I_LEARNED_STAGING:
-        (analytics as ITypeSafeAnalyticsInstance).trackEvent =
-          this.trackTodayILearnedEvents;
-        break;
-      case AppName.DAILY_MASTERMIND_STAGING:
-        (analytics as ITypeSafeAnalyticsInstance).trackEvent =
-          this.trackDailyMastermindEvents;
-        break;
-
-      default:
-        (analytics as ITypeSafeAnalyticsInstance).trackEvent =
-          this.trackTodayILearnedEvents;
-    }
+    (analytics as ITypeSafeAnalyticsInstance).trackEvent = this.trackEvent;
 
     return analytics as ITypeSafeAnalyticsInstance;
   }
 
-  // prettier-ignore
-  trackDailyMastermindEvents = <IDailyMastermindEventMap, Key extends keyof IDailyMastermindEventMap>(
+  trackEvent = <Type, Key extends keyof Type>(
     eventName: Key,
-    eventProps: IDailyMastermindEventMap[Key]
-  ) => {
-    this.analytics.track(eventName as string, eventProps);
-  }
-
-  // prettier-ignore
-  trackTodayILearnedEvents = <ITodayILearnedEventMap, Key extends keyof ITodayILearnedEventMap>(
-    eventName: Key,
-    eventProps: ITodayILearnedEventMap[Key]
-  ) => {
-    this.analytics.track(eventName as string, eventProps);
-  }
+    eventProps: Type[Key]
+  ) => this.analytics.track(eventName as string, eventProps);
 }
 
 export * from './types';

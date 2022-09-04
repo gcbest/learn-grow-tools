@@ -34,5 +34,5 @@ export interface ITypeSafeAnalyticsInstance extends AnalyticsInstance {
   trackEvent: <Type, Key extends keyof Type>(
     eventName: Key,
     eventProps: Type[Key]
-  ) => void;
+  ) => Promise<unknown>;
 }
